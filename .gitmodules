@@ -1,0 +1,3 @@
+[submodule "mynews"]
+	path = mynews
+	url = git@github.com:takahashi18/mynews.git
