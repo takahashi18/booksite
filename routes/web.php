@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Breeze 追加機能
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,4 +36,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/book/index',[BookController::class,'index']);
+//　自分で追加
+
+Route::get('/books',[BookController::class,'index']); //一覧画面
+
+Route::get('/book/{id}',[BookController::class,'show']); //詳細画面
+
+Route::get('/mypage',[UserController::class,'index']);//MYページ
