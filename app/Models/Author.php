@@ -4,16 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use PharIo\Manifest\AuthorElement;
+use App\Models\Book; //追記
 
 class Author extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id';
 
-    //primaryKeyの変更
-    protected $primaryKey = "author_id";
+    use Notifiable;
+    protected $fillable= [
+        'author',
+    ];
 
-    //hasManyの設定
+    //リレーション定義：hasManyの設定
     public function books()
     {
         return $this->hasMany(Book::class);

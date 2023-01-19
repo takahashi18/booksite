@@ -10,44 +10,47 @@
                 {{-- 検索機能 --}}
                 <div>
                     <form action="" method="GET">
-                      <input type="text" name="keyword" value="">
-                      <input type="submit" value="検索">
+                        <input type="text" name="keyword" value="">
+                        <input type="submit" value="検索">
                     </form>
 
                     {{-- priceソート機能 --}}
-                    <select name="price">
-                        <option value="asc">安い順</option>
-                        <option value="desc">高い順</option>
-                    </select>
+                    {{-- <form id="form">
+                        <select name="price" id="price">
+                            <option value="1" >指定なし</option>
+                            <option value="2" >価格が低い順</option>
+                            <option value="3" >価格が高い順</option>
+                        </select>
+                    </form> --}}
 
-                  </div>
+                </div>
 
                 {{-- mypage link --}}
-                    <div class="d-flex flex-row flex-wrap">
-                        <p style="text-align: right">
-                            <a href="/mypage">MYPAGE</a><br>
-                        </p>
+                <div class="d-flex flex-row flex-wrap">
+                    <p style="text-align: right">
+                        <a href="/mypage">MYPAGE</a><br>
+                    </p>
 
-                        <div class="text-center" style="width: 300px; margin:100px auto;">
+                    <div class="text-center" style="width: 300px; margin:100px auto;">
                         {{-- all books date --}}
-                            @foreach ($books as $book)
-                                <img src="{{ asset('/storage/image/' . $book->image) }}" width="300" height=""
-                                    alt="画像" class="incart"><br>
-                                <a href="/book/{{ $book->id }}">{{ $book->book_name }}</a> <br>
-                                {{ $book->author_id }} <br>
-                                {{ $book->price }}円<br>
-                                <br>
-                                <br>
-                            @endforeach
+                        @foreach ($books as $book)
+                            <img src="{{ asset('/storage/image/' . $book->image) }}" width="300" height=""
+                                alt="画像" class="incart"><br>
+                            <a href="/book/{{ $book->id }}">{{ $book->book_name }}</a> <br>
+                            {{ $book->author->author }}<br>
+                            {{ $book->price }}円<br>
+                            <br>
+                            <br>
+                        @endforeach
 
-                            {{-- pagenation --}}
-                                <div class="text-center" style="width: 50px;margin: 20px auto;">
+                        {{-- pagenation --}}
+                        <div class="text-center" style="width: 50px;margin: 20px auto;">
 
-                                {{ $books->links() }}
-                            </div>
+                            {{ $books->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

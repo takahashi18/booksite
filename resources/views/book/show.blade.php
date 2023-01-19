@@ -15,15 +15,20 @@
                 <img src="{{ asset('/storage/image/'.$book->image) }}" width="300" height="" alt="画像" class="incart" ><br>
                 {{$book->book_name}} <br>
                 {{$book->price}} 円　<br>
-                {{$book->author_id}} <br>
+                {{$book->author->author}} <br>
                 {{$book->introduction}} <br>
 
                 <button type="submit" name="">購入</button><br>
                 <br>
 
-                <p>{{$book->author_id}} の作品一覧</p>
 
-                
+                <p>{{$book->author->author}} の作品一覧</p>
+
+
+                {{$author_books->books}}
+                <br>
+
+
 
                 <a href="/books">TOPへ</a>
             </div>
