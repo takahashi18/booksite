@@ -33,10 +33,8 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
 
         //authorが持つ、booksが全部取得できる
-        $author_books = Author::find($book-> author_id);
-
-        return view('book.show',compact('book'),compact('author_books'));
-
+        $books = Author::find($book->author_id)->books;
+        return view('book.show',compact('book'),compact('books'));
 
 
     }
