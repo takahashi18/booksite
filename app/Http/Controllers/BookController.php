@@ -17,11 +17,20 @@ class BookController extends Controller
     //一覧画面
     public function index(Request $request)
     {
+        //キーワードの受け取り
+        $keyword = $request->input('keyword');
+        //クエリ生成
+        $query = Book::query();
 
+        //もしキーワードがあたら
+        if (!empty($keyword)) {
+            $query->where('book_name', 'LIKE', "%{$keyword}%");
+        }
+        $books = $query->orderBy('created_at', 'desc')->paginate(6);
 
-        $books = Book::with('author')->paginate(6);
+        //books = Book::with('author')->paginate(6);
 
-        return view('book.index',compact('books'));
+        return view('book.index',compact('books','keyword'));
     }
 
 
@@ -34,8 +43,6 @@ class BookController extends Controller
 
         //authorが持つ、booksが全部取得できる
         $books = Author::find($book->author_id)->books;
-        return view('book.show',compact('book'),compact('books'));
-
-
+        return view('book.show', compact('book'), compact('books'));
     }
 }

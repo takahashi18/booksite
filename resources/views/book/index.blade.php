@@ -1,34 +1,28 @@
-@extends('layouts.books')
+@extends('layouts.aya.books')
 
 @section('content')
     <div class="container-fluid">
         <div class="">
             <div class="mx-auto" style="max-width:1200px">
-                <h1 style="color:#555555; text-align:center; font-size:1.2em; padding:24px 0px; font-weight:bold;">本の一覧ページ
+                <h1 style="color:#555555; text-align:center; font-size:3.2em; padding:24px 0px; font-weight:bold;">BookSite
                 </h1>
 
-                {{-- 検索機能 --}}
+                {{-- search option --}}
                 <div>
-                    <form action="" method="GET">
-                        <input type="text" name="keyword" value="">
-                        <input type="submit" value="検索">
-                    </form>
-
-                    {{-- priceソート機能 --}}
-                    {{-- <form id="form">
-                        <select name="price" id="price">
-                            <option value="1" >指定なし</option>
-                            <option value="2" >価格が低い順</option>
-                            <option value="3" >価格が高い順</option>
-                        </select>
-                    </form> --}}
-
+                    <center>
+                        <form action="" method="GET">
+                            <input type="text" name="keyword" value="{{ $keyword }}">
+                            <button type="submit">検索</button>
+                        </form>
+                    </center>
                 </div>
 
                 {{-- mypage link --}}
                 <div class="d-flex flex-row flex-wrap">
                     <p style="text-align: right">
-                        <a href="/mypage">MYPAGE</a><br>
+
+                        <a href="/books">▶︎BookSite</a><br>
+                        <a href="/mypage">▶︎MYPAGE</a><br>
                     </p>
 
                     <div class="text-center" style="width: 300px; margin:100px auto;">

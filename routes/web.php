@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\MypageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,14 +32,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+//追加：MyPageController
+    Route::get('/mypage',[MypageController::class,'index'])->name('mypage.idex'); //マイページ表示
+    Route::get('/mypageedit',[MypageController::class,'edit'])->name('mypage.edit'); //マイページ編集
 });
 
 require __DIR__.'/auth.php';
 
 //　自分で追加
 
-Route::get('/books',[BookController::class,'index']); //一覧画面
+Route::get('/books',[BookController::class,'index'])->name('books.index'); //一覧画面
 
-Route::get('/book/{id}',[BookController::class,'show']); //詳細画面
-
-Route::get('/mypage',[UserController::class,'index']);//MYページ
+Route::get('/book/{id}',[BookController::class,'show'])->name('books.show'); //詳細画面
