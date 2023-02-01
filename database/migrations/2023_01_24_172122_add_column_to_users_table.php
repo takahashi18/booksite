@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->string('postal_num');  // 郵便番号
+            $table->string('address');  // 住所
+            $table->string('tel_num'); // 電話番号
+            $table->softDeletes();  // ソフトデリート
         });
     }
 
@@ -26,7 +29,11 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('postal_num');  // 郵便番号
+            $table->dropColumn('address');  // 住所
+            $table->dropColumn('tel_num'); // 電話番号
+            $table->dropSoftDeletes();  // ソフトデリート
+
         });
     }
 };

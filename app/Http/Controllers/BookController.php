@@ -14,7 +14,7 @@ use function PHPUnit\Framework\returnValueMap;
 
 class BookController extends Controller
 {
-    //一覧画面
+    //一覧画面  /books
     public function index(Request $request)
     {
         //キーワードの受け取り
@@ -33,9 +33,7 @@ class BookController extends Controller
         return view('book.index',compact('books','keyword'));
     }
 
-
-
-    //詳細画面
+    //詳細画面  /book/{$id}
     public function show($id)
     {
         //詳細表示

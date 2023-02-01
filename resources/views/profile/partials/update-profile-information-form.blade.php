@@ -16,13 +16,14 @@
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
-
+        {{-- name --}}
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
+        {{-- email --}}
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="email" />
@@ -45,6 +46,28 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        {{-- postal --}}
+        <div>
+            <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+            <x-input-label for="postal_num" :value="__('Postal_num')" />
+            <x-text-input id="postal_num" name="postal_num" type="text" class="mt-1 block w-full" :value="old('postal_num', $user->postal_num)" required autofocus autocomplete="postal_num" onKeyUp="AjaxZip3.zip2addr('postal_num', '', 'address', 'address');"/>
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+        {{-- adress --}}
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $user->address)" required autofocus autocomplete="address"  />
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
+        </div>
+
+        {{-- tel --}}
+        <div>
+            <x-input-label for="tel_num" :value="__('Tel_num')" />
+            <x-text-input id="tel_num" name="tel_num" type="text" class="mt-1 block w-full" :value="old('tel_num', $user->tel_num)" required autofocus autocomplete="tel_num" />
+            <x-input-error class="mt-2" :messages="$errors->get('tel_num')" />
         </div>
 
         <div class="flex items-center gap-4">

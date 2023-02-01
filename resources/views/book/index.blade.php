@@ -22,7 +22,7 @@
                     <p style="text-align: right">
 
                         <a href="/books">▶︎BookSite</a><br>
-                        <a href="/mypage">▶︎MYPAGE</a><br>
+                        <a href="/mypage">▶︎MyPage</a><br>
                     </p>
 
                     <div class="text-center" style="width: 300px; margin:100px auto;">

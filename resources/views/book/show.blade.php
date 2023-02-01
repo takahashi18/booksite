@@ -16,9 +16,9 @@
             {{ $book->author->author }} <br>
             {{ $book->introduction }} <br>
 
-            <button type="submit" name="">購入</button><br>
-            <br>
-
+            <form action="" method="post">
+                <input type="submit" value="購入">
+            </form>
 
             <p>{{ $book->author->author }} の作品一覧</p>
             @foreach ($books as $book)

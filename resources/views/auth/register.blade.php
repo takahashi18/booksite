@@ -16,6 +16,28 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- postal -->
+        <div>
+            <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+            <x-input-label for="postal_num" :value="__('Postal_num')" />
+            <x-text-input id="postal_num" onKeyUp="AjaxZip3.zip2addr('postal_num', '', 'address', 'address');" class="block mt-1 w-full" type="text" name="postal_num" :value="old('postal_num')" required autofocus />
+            <x-input-error :messages="$errors->get('postal_num')" class="mt-2" />
+        </div>
+
+        <!-- address -->
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
+
+        <!-- tel -->
+        <div>
+            <x-input-label for="tel_num" :value="__('Tel_num')" />
+            <x-text-input id="tel_num" class="block mt-1 w-full" type="text" name="tel_num" :value="old('tel_num')" required autofocus />
+            <x-input-error :messages="$errors->get('tel_num')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
