@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Book; //追記
 use App\Models\Author; //追記
 use Illuminate\Support\Facades\Auth; //追加
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -32,68 +31,36 @@ class BookController extends Controller
         return view('book.index', compact('books', 'keyword'));
     }
 
-    //詳細画面  /book/{$id}
     public function show($id)
     {
-        //詳細表示
         $book = Book::findOrFail($id);
-
-        //authorが持つ、booksが全部取得できる
         $books = Author::find($book->author_id)->books;
+
         return view('book.show', compact('book', 'books'));
     }
 
-    public function input(Request $request)
+    public function input(Request $request , $id)
     {
-        //フォームから受け取る
-        $book_name = $request->book_name;
-        $price = $request->price;
-        $author = $request->author;
+        $book = Book::findOrFail($id);
+        $price = $book->price;
         $quantity = $request->quantity;
-
         $total_price = $price * $quantity;
-
-
         $user = Auth::user();
-        return view('buy.input', compact('user', 'quantity', 'book_name', 'price', 'author', 'total_price'));
+
+        return view('buy.input', compact('user', 'quantity', 'book', 'price' , 'total_price'));
     }
 
-    //購入確認画面  /confirm
-    public function confirm(Request $request)
+    public function confirm(Request $request , $id)
     {
-        //フォームから受け取る
-
-        dd($request);
-        $book_name = $request->book_name;
-        $price = $request->price;
-        $author = $request->author;
-        $quantity = $request->quantity;
-
-        $total_price = $price * $quantity;
         $order_at = $request->order_at;
 
-
-        $user = Auth::user();
-        return view('buy.confirm', compact('user', 'quantity', 'book_name', 'price', 'author', 'total_price','order_at'));
-    }
-
-    public function confirm2(Request $request)
-    {
-        //フォームから受け取る
-        $book_name = $request->book_name;
-
-        dd($book_name);
-
-
-        $price = $request->price;
-        $author = $request->author;
+        $book = Book::findOrFail($id);
+        $price = $book->price;
         $quantity = $request->quantity;
-
         $total_price = $price * $quantity;
-
-
         $user = Auth::user();
-        return view('buy.confirm', compact('user', 'quantity', 'book_name', 'price', 'author', 'total_price'));
+
+        return view('buy.confirm', compact('user', 'quantity', 'book', 'price' , 'total_price', 'order_at'));
     }
 
 

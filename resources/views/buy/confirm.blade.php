@@ -9,17 +9,17 @@
 
 
                 <h2 class="heafing">■ ご購入商品情報</h2>
-                <br>
-                タイトル : {{ $book_name }}<br>
-                <br>
-                著者 : {{ $author }}<br>
-                <br>
-                金額 : {{ $price }}円 / 1冊<br>
-                <br>
-                数量 : {{ $quantity }} 冊<br>
-                <br>
-                合計金額 : {{ $total_price }}円 <br>
-                <br>
+                    <br>
+                    タイトル : {{ $book->book_name }}<br>
+                    <br>
+                    著者 : {{ $book->author->author }}<br>
+                    <br>
+                    金額 : {{ $price }}円 / 1冊<br>
+                    <br>
+                    数量 : {{ $quantity }} 冊<br>
+                    <br>
+                    合計金額 : {{ $total_price }}円 <br>
+                    <br>
 
                 <h2 class="heafing">■ お届け先情報</h2>
 
@@ -38,7 +38,7 @@
                 <br>
                 <br>
                 <input type="button" onclick="history.back(-1)" value="修正"> <input type="button"
-                    onclick="location.href='/order' "value="購入">
+                    onclick="location.href='/order' "value="注文">
 
 
             </div>
