@@ -10,42 +10,47 @@
                 <form action="/confirm/{{ $book->id }}" method="POST">
                     @csrf
 
-                <h2 class="heafing">■ ご購入商品情報</h2>
-                <br>
-                タイトル : {{ $book->book_name }}<br>
-                <br>
-                著者 : {{ $book->author->author }}<br>
-                <br>
-                金額 : {{ $price }}円 / 1冊<br>
-                <br>
-                数量 : <input type="hidden" name="quantity" value="{{ $quantity}}" /> {{ $quantity}}冊<br>
-                <br>
-                合計金額 : {{ $total_price }}円 <br>
-                <br>
+                    <h2 class="heafing">■ ご購入商品情報</h2>
+                    <br>
+                    タイトル : {{ $book->book_name }}<br>
+                    <br>
+                    著者 : {{ $book->author->author }}<br>
+                    <br>
+                    金額 : {{ $price }}円 / 1冊<br>
+                    <br>
+                    数量 : <input type="hidden" name="quantity" value="{{ $quantity }}" /> {{ $quantity }}冊<br>
+                    <br>
+                    合計金額 : {{ $total_price }}円 <br>
+                    <br>
 
 
-                <h2 class="heafing">■ お届け先情報</h2>
+                    <h2 class="heafing">■ お届け先情報</h2>
 
-                名前 : {{ $user->name }} <br>
-                <br>
-                電話番号 : {{ $user->tel_num }} <br>
-                <br>
-                郵便番号 : {{ $user->postal_num }} <br>
-                <br>
-                住所 : {{ $user->address }} <br>
-                <br>
-
-
-                <input type="submit" onclick="location.href='/profile' "value="編集">
+                    名前 : {{ $user->name }} <br>
+                    <br>
+                    電話番号 : {{ $user->tel_num }} <br>
+                    <br>
+                    郵便番号 : {{ $user->postal_num }} <br>
+                    <br>
+                    住所 : {{ $user->address }} <br>
+                    <br>
 
 
-                <h2 class="heafing">■ お届け日指定</h2>
+                    <input type="submit" onclick="location.href='/profile' " value="編集">
+
+                    <h2 class="heafing">■ お届け日指定</h2>
+
+                    配送日 : <input name="delivery_at" type="date" min="<?php echo date('Y-m-d', strtotime('+2 day')); ?>" required="required" /><br>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
 
 
-                    配送日 : <input name="order_at" type="date" min="<?php echo date('Y-m-d', strtotime('+2 day')); ?>" required /><br>
-
-                    <input type="submit" onclick="location.href='/books' "value="TOP"> <input type="submit"
-                        value="確認">
+                    <input type="submit" onclick="location.href='/books' "value="TOP">
+                    <input type="submit" onclick="location.href='/confirm/{{ $book->id }}'" value="確認" >
                 </form>
 
 

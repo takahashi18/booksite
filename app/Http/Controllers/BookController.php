@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book; //追記
 use App\Models\Author; //追記
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth; //追加
+use App\Http\Requests\BookRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -52,15 +54,24 @@ class BookController extends Controller
 
     public function confirm(Request $request , $id)
     {
-        $order_at = $request->order_at;
+        $delivery_at = $request->delivery_at;
 
         $book = Book::findOrFail($id);
         $price = $book->price;
         $quantity = $request->quantity;
         $total_price = $price * $quantity;
         $user = Auth::user();
+        $user_id = Auth::id();
 
-        return view('buy.confirm', compact('user', 'quantity', 'book', 'price' , 'total_price', 'order_at'));
+        $order = new Order;
+        $form = $request->all();
+        $order->book_id = $book->id;
+        $order->quantity = $request->quantity;
+        $order->user_id = $user->id;
+        $order->delivery_at = $request->delivery_at;
+        $order->save();
+
+        return view('buy.confirm', compact('user', 'quantity', 'book', 'price' , 'total_price', 'delivery_at'));
     }
 
 

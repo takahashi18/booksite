@@ -28,8 +28,7 @@
                     <div class="text-center" style="width: 300px; margin:100px auto;">
                         {{-- all books date --}}
                         @foreach ($books as $book)
-                            <img src="{{ asset('/storage/image/' . $book->image) }}" width="300" height=""
-                                alt="画像" class="incart"><br>
+                            <img src="{{ asset('/storage/image/' . $book->image) }}" width="300" height="" alt="画像" class="incart"><br>
                             <a href="/book/{{ $book->id }}">{{ $book->book_name }}</a> <br>
                             {{ $book->author->author }}<br>
                             {{ $book->price }}円<br>

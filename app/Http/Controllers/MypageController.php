@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User; //追加
 use Illuminate\Support\Facades\Auth; //追加
 use Illuminate\Support\Facades\Redirect; //追加
@@ -17,9 +18,12 @@ class MypageController extends Controller
     public function index()
     {
         $auth= Auth::user();
+
+
         return view('mypage.index', compact('auth'));
     }
 
+    /*
         //編集
 
     public function edit(Request $request)
@@ -47,7 +51,7 @@ class MypageController extends Controller
     }
 
     //編集
-    /*
+
     public function edit(Request $request)
     {
         return view('mypage.edit', [

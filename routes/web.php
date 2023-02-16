@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\BuyController;
+use App\Http\Controllers\Profile1Controller;
 use App\Http\Controllers\MypageController;
 use App\Models\Book;
 use PhpParser\Builder\Function_;
@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () { //ログインしていれば表�
 
     Route::get('/confirm/{id}',[BookController::class, 'confirm'] )->name('buy.confirm'); //購入確認画面
     Route::post('/confirm/{id}',[BookController::class, 'confirm'] )->name('buy.confirm'); //購入確認画面
-    Route::get('/order',[BookController::class, 'complete'] )->name('buy.complete');
+    Route::get('/order',[BookController::class, 'complete'] )->name('buy.complete'); //注文確定画面
 
 });
 
