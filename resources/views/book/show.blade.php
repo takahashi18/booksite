@@ -15,22 +15,8 @@
                 {{ $book->author->author }} <br>
                 {{ $book->introduction }} <br>
 
-                <form action="/buy/{{ $book->id}}" method="POST">
-                    @csrf
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">購入部数選択</label>
-                        <div class="col-md-6">
-                            <select class="form-control" id="quantity" name="quantity">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                <input type="submit"  value="購入">
-                        </div>
-                    </div>
-                </form>
+                <input type="submit" onclick="location.href='/buy/{{ $book->id}}' " value="購入">
+
             </div>
         </div>
     </div>

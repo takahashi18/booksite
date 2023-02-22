@@ -30,15 +30,17 @@
                         電話番号 {{ $auth->tel_num }} <br>
                         <br>
                         <input type="button" onclick="location.href='/profile' "value="編集">
+
+                        
                         <h2 class="heafing">■ 購入履歴</h2>
 
                         @foreach ($my_orders as $my_order)
                             タイトル： {{ $my_order->book->book_name }} <br>
                             著者： {{ $my_order->book->author->author }} <br>
                             購入部数： {{ $my_order->quantity }} <br>
-                            単価： {{ number_format($my_order->book->price) }}円 <br>
+                            単価： {{ $my_order->book->price}}円 <br>
                             合計金額： {{ $my_order->quantity * $my_order->book->price }}円 <br>
-                            注文日： {{ $my_order->book->created_at }} <br>
+                            注文日： {{ $my_order->created_at }} <br>
                             <br>
 
                         <br>

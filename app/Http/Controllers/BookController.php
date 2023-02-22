@@ -41,43 +41,60 @@ class BookController extends Controller
         return view('book.show', compact('book', 'books'));
     }
 
-    public function input(Request $request , $id)
+    public function input ($id)
     {
+        $book = Book::findOrFail($id);
+        $price = $book->price;
+        $user = Auth::user();
+
+
+        return view('buy.input', compact('user',  'book', 'price' ));
+    }
+
+    public function confirm(Request $request , $id)
+    {
+
+
+        $validated = $request->validate([
+            'delivery_at' => 'required',
+        ]);
+
         $book = Book::findOrFail($id);
         $price = $book->price;
         $quantity = $request->quantity;
         $total_price = $price * $quantity;
         $user = Auth::user();
-
-        return view('buy.input', compact('user', 'quantity', 'book', 'price' , 'total_price'));
-    }
-
-    public function confirm(Request $request , $id)
-    {
         $delivery_at = $request->delivery_at;
 
+        $request->session()->put('quantity', $quantity);
+        $request->session()->put('delivery_at',$delivery_at);
+
+
+        return view('buy.confirm',compact('book','price','quantity','total_price','user','delivery_at'));
+    }
+
+
+    public function complete(Request $request, $id)
+    {
+        $quantity = $request->session()->get('quantity');
+        $delivery_at = $request->session()->get('delivery_at');
+
+
         $book = Book::findOrFail($id);
-        $price = $book->price;
-        $quantity = $request->quantity;
-        $total_price = $price * $quantity;
         $user = Auth::user();
         $user_id = Auth::id();
 
         $order = new Order;
         $form = $request->all();
+
         $order->book_id = $book->id;
-        $order->quantity = $request->quantity;
+        $order->quantity = $quantity;
         $order->user_id = $user->id;
-        $order->delivery_at = $request->delivery_at;
+        $order->delivery_at = $delivery_at;
         $order->save();
 
-        return view('buy.confirm', compact('user', 'quantity', 'book', 'price' , 'total_price', 'delivery_at'));
-    }
 
-
-    public function complete()
-    {
-        return view('buy.complete');
+        return view('buy.complete',compact('book','quantity','user','delivery_at'));
     }
 
 }

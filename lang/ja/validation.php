@@ -156,6 +156,10 @@ return [
     */
 
     'attributes' => [
+        'delivery_at' => '配送日', //追加
+        'tel_num' => '電話番号', //追加
+        'postal_num' => '郵便番号', //追加
+        'quantity' => '購入部数', //追加
         'address' => '住所',
         'age' => '歳',
         'amount' => '額',

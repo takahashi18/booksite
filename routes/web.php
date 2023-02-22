@@ -42,11 +42,11 @@ Route::middleware('auth')->group(function () { //ログインしていれば表�
 
     //追加：BookController
     Route::get('/buy/{id}', [BookController::class, 'input'])->name('buy.input'); //購入入力ページ
-    Route::post('/buy/{id}', [BookController::class, 'input'])->name('buy.input'); //購入入力ページ
 
-    Route::get('/confirm/{id}',[BookController::class, 'confirm'] )->name('buy.confirm'); //購入確認画面
-    Route::post('/confirm/{id}',[BookController::class, 'confirm'] )->name('buy.confirm'); //購入確認画面
-    Route::get('/order',[BookController::class, 'complete'] )->name('buy.complete'); //注文確定画面
+    Route::get('/confirm/{id}',[BookController::class, 'confirm'] )->name('buy.confirm'); //購入確認画面★
+    Route::post('/confirm/{id}',[BookController::class, 'confirm'] )->name('buy.confirm'); //購入確認画面★
+    Route::get('/order/{id}',[BookController::class, 'complete'] )->name('buy.complete'); //注文確定画面
+    Route::post('/order/{id}',[BookController::class, 'complete'] )->name('buy.complete'); //注文確定画面
 
 });
 
@@ -57,6 +57,5 @@ require __DIR__ . '/auth.php';
 Route::controller(BookController::class)->group(function () {
     Route::get('/books', 'index')->name('book.index'); //一覧画面
     Route::get('/book/{id}', 'show')->name('book.show'); //詳細画面
-    Route::post('/book/{id}', 'show')->name('book.show'); //詳細画面
 
 });
