@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () { //ログインしていれば表�
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //追加：MyPageController
-    Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.idex'); //マイページ表示
+    Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index'); //マイページ表示
     Route::get('/mypageedit', [MypageController::class, 'edit'])->name('mypage.edit'); //マイページ編集
 
     //追加：BookController
@@ -58,4 +58,8 @@ Route::controller(BookController::class)->group(function () {
     Route::get('/books', 'index')->name('book.index'); //一覧画面
     Route::get('/book/{id}', 'show')->name('book.show'); //詳細画面
 
+});
+
+Route::get('/bootstrap', function () {
+    return view('bootstrap');
 });

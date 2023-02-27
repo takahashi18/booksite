@@ -1,15 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
-{{-- mypageに戻る：追加 --}}
-    <div class="d-flex flex-row flex-wrap">
-        <p style="text-align: right">
-            <a  href="/mypage">▶MyPage </a>  <a href="/books">▶BookSite </a><br>
-        </p>
-    </div>
+
 {{-- なまえ・アドレス変更 --}}
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
