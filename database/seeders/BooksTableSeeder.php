@@ -172,7 +172,7 @@ class BooksTableSeeder extends Seeder
             'image' => '池井戸１.png',
             'author_id' => '6',
             'price' => '1020',
-            'introduction' => '「お前には夢があるのか？　オレにはある」男たちの矜恃が激突する感動のエンターテインメント長編！第１４５回直木賞受賞作。池井戸潤、絶対の代表作。',
+            'introduction' => '「お前には夢があるのか？ オレにはある」男たちの矜恃が激突する感動のエンターテインメント長編！第１４５回直木賞受賞作。池井戸潤、絶対の代表作。',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => new DateTime(),
