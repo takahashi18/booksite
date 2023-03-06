@@ -1,6 +1,6 @@
 {
     "Name": "名前",
-    "Postal_num": "郵便番号(7桁)",
+    "Postal_num": "郵便番号(7桁/半角)",
     "Address": "住所",
     "Tel_num": "電話番号(ハイフンなし)",
     "Profile": "アカウント",

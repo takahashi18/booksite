@@ -37,9 +37,9 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'postal_num' => ['required', 'string', 'max:7'],  // 郵便番号
+            'postal_num' => ['required', 'integer','digits:7',],  // 郵便番号
             'address' => ['required', 'string', 'max:255'],  // 住所
-            'tel_num' => ['required', 'string', 'max:11'],  // 電話番号
+            'tel_num' => ['required', 'integer', 'max:11','digits_between:10,11'],  // 電話番号
 
         ]);
 
