@@ -37,7 +37,8 @@
 
 
     {{-- pagenation --}}
+
     <ul class="pagination justify-content-center">
-        {{ $books->links('pagination::bootstrap-4') }}
+        {{ $books->appends(request()->query())->links('pagination::bootstrap-4') }}
     </ul>
 @endsection
